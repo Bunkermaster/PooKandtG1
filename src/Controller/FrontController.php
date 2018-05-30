@@ -18,7 +18,7 @@ class FrontController
         switch ($action) {
             case "page.show":
                 // display page details
-                $controller = new PageController();
+                $controller = new PageController($pdo);
                 $controller->show();
                 break;
 

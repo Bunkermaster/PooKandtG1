@@ -2,6 +2,9 @@
 
 namespace Controller;
 
+use Model\PageModel;
+use View\PageView;
+
 /**
  * Class PageController
  * @author Yann Le Scouarnec <bunkermaster@gmail.com>
@@ -9,26 +12,62 @@ namespace Controller;
  */
 class PageController
 {
-    public function index()
+    /**
+     * @var PageModel
+     */
+    private $model;
+
+    /**
+     * @var PageView
+     */
+    private $view;
+
+    /**
+     * PageController constructor.
+     */
+    public function __construct()
     {
-        echo "It indexes!!!";
+        $this->model = new PageModel();
+        $this->view = new PageView();
     }
 
+    /**
+     * @throws \Exception
+     */
+    public function index(): void
+    {
+        $data = $this->model->findAll();
+        $this->view->index($data);
+    }
+
+    /**
+     *
+     */
     public function show()
     {
+//        $data = $this->model->findBySlug($slug);
         echo "Il fait show";
     }
 
+    /**
+     *
+     */
     public function add()
     {
 
     }
 
+    /**
+     *
+     */
     public function delete()
     {
 
     }
 
+    /**
+     *
+     */
     public function edit()
     {
 
