@@ -1,0 +1,12 @@
+{
+    "name": "bunker/kandtpoog1",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "bunkermaster",
+            "email": "yann.le-scouarnec@hetic.net"
+        }
+    ],
+    "require": {}
+}
