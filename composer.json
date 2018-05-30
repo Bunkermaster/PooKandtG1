@@ -8,5 +8,15 @@
             "email": "yann.le-scouarnec@hetic.net"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Controller\\": "src/Controller",
+            "View\\": "src/View",
+            "Model\\": "src/Model"
+        },
+        "files": [
+            "init.php"
+        ]
+    }
 }
