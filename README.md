@@ -31,7 +31,18 @@ GET admin/?a=page.index
 GET admin/
 ```
 
+```php
+PageController::index()
+PageModel::findAll()
+PageView::index($data)
+```
+
 ### show
+
+```
+GET admin/index.php?a=page.show&id={id}
+GET admin/?a=page.show&id={id}
+```
 
 
 
