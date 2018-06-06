@@ -37,15 +37,4 @@ final class PdoConnexion
 
         return self::$pdo;
     }
-
-    /**
-     * @param \PDOStatement $stmt
-     * @throws \Exception
-     */
-    public static function errorHandler(\PDOStatement $stmt): void
-    {
-        if ($stmt->errorCode() !== '00000') {
-            throw new \Exception($stmt->errorInfo()[1]);
-        }
-    }
 }

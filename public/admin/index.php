@@ -6,7 +6,7 @@
  * Time: 14:48
  */
 
-use \Controller\FrontController;
+use \Helper\FrontController;
 
 require_once dirname(dirname(__DIR__))."/vendor/autoload.php";
 $frontController = new FrontController();

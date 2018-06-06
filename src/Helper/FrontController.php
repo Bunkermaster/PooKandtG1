@@ -1,6 +1,8 @@
 <?php
 
-namespace Controller;
+namespace Helper;
+
+use Controller\PageController;
 
 /**
  * Class FrontController
@@ -18,8 +20,17 @@ class FrontController
         switch ($action) {
             case "page.show":
                 // display page details
-                $controller = new PageController($pdo);
+                $controller = new PageController();
                 $controller->show();
+                break;
+
+            case "page.add":
+                break;
+
+            case "page.delete":
+                break;
+
+            case "page.edit":
                 break;
 
             case "page.index":
