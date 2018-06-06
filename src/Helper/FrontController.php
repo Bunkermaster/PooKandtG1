@@ -25,12 +25,18 @@ class FrontController
                 break;
 
             case "page.add":
+                $controller = new PageController();
+                $controller->add();
                 break;
 
             case "page.delete":
+                $controller = new PageController();
+                $controller->delete();
                 break;
 
             case "page.edit":
+                $controller = new PageController();
+                $controller->edit();
                 break;
 
             case "page.index":

@@ -129,9 +129,47 @@ FROM
   `page` 
 WHERE 
   `id` = :id
+LIMIT 1
 ;";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':id', $id, \PDO::PARAM_INT);
+        $stmt->execute();
+        $this->errorHandler($stmt);
+        $data = $stmt->fetch(\PDO::FETCH_ASSOC);
+        if ([] === $data) {
+            return null;
+        }
+
+        return $data;
+    }
+
+    /**
+     * returns a page by slug string
+     * @param string $slug
+     * @return array|null
+     * @throws \Exception
+     */
+    public function findBySlug(string $slug): ?array
+    {
+        $sql = "SELECT 
+  `id`, 
+  `slug`, 
+  `title`, 
+  `h1`, 
+  `p`, 
+  `span-class`, 
+  `span-text`, 
+  `img-alt`, 
+  `img-src`,
+  `nav-title` 
+FROM 
+  `page` 
+WHERE 
+  `slug` = :slug
+LIMIT 1
+;";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':slug', $slug, \PDO::PARAM_STR);
         $stmt->execute();
         $this->errorHandler($stmt);
         $data = $stmt->fetch(\PDO::FETCH_ASSOC);
@@ -154,7 +192,7 @@ WHERE
   `id` = :id
 ;";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':id', $data['id'] ?? '');
+        $stmt->bindValue(':id', $id);
         $stmt->execute();
         $this->errorHandler($stmt);
     }

@@ -1,5 +1,10 @@
 # KandT project
 
+## Sitemap
+
+![Sitemap](./kandt-poo-g1.png "Sitemap")
+
+
 ## Page
 
 ```sql
