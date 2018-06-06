@@ -12,8 +12,9 @@ class PageView
     /**
      * @param array|null $data
      */
-    public function index(?array $data): void
+    public function index(?array $data): string
     {
+        ob_start();
 ?>
         <h1>List pages</h1>
         <table>
@@ -40,11 +41,14 @@ class PageView
         <?php endif;?>
         </table>
 <?php
-        $this->form();
+        echo $this->form();
+
+        return \ob_get_clean();
     }
 
-    public function form(array $data = [], $action = 'page.add', $buttonLabel = "Ajouter"): void
+    public function form(array $data = [], $action = 'page.add', $buttonLabel = "Ajouter"): string
     {
+        ob_start();
 ?>
         <form action="<?=KANDT_ROOT_URI.KANDT_ACTION_PARAM.'='.$action?>" method="post">
             <input type="hidden" name="page[id]" value="<?=$data['id'] ?? ''?>">
@@ -69,21 +73,29 @@ class PageView
             <input type="submit" value="<?=$buttonLabel?>">
         </form>
 <?php
-        
+
+        return \ob_get_clean();
     }
 
-    public function edit(array $data): void
+    public function edit(array $data): string
     {
-        $this->form($data, 'page.edit', 'Modifier');
+        ob_start();
+        echo $this->form($data, 'page.edit', 'Modifier');
+
+        return \ob_get_clean();
     }
 
-    public function show(array $data): void
+    public function show(array $data): string
     {
+        ob_start();
         var_dump($data);
+
+        return \ob_get_clean();
     }
 
-    public function delete(array $data): void
+    public function delete(array $data): string
     {
+        ob_start();
 ?>
         <form action="<?=\KANDT_ROOT_URI.\KANDT_ACTION_PARAM."=page.delete"?>" method="post">
             <h2>Êtes vous certain de vouloir supprimer <i><?=$data['slug']?></i></h2>
@@ -92,5 +104,7 @@ class PageView
             <input type="button" value="Annuler" onclick="history.back()">
         </form>
 <?php
+
+        return \ob_get_clean();
     }
 }

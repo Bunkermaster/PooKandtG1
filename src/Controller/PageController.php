@@ -26,26 +26,28 @@ class PageController extends AbstractController
     /**
      * @throws \Exception
      */
-    public function index(): void
+    public function index(): string
     {
         $data = $this->model->findAll();
-        $this->view->index($data);
+
+        return $this->view->index($data);
     }
 
     /**
      *
      */
-    public function show()
+    public function show(): string
     {
         $id = $_GET['id'] ?? $_POST['id'] ?? 0;
         $data = $this->model->find($id);
-        $this->view->show($data);
+
+        return $this->view->show($data);
     }
 
     /**
      * processes the POSTed form to add a new page
      */
-    public function add()
+    public function add(): string
     {
         if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['page'])) {
             $data = $_POST['page'];
@@ -60,7 +62,7 @@ class PageController extends AbstractController
     /**
      *
      */
-    public function delete()
+    public function delete(): string
     {
         if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['page'])) {
             $data = $_POST['page'];
@@ -70,13 +72,14 @@ class PageController extends AbstractController
         }
         $id = $_GET['id'] ?? $_POST['id'] ?? 0;
         $data = $this->model->find($id);
-        $this->view->delete($data);
+
+        return $this->view->delete($data);
     }
 
     /**
      * Updates page content
      */
-    public function edit()
+    public function edit(): string
     {
         if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['page'])) {
             $data = $_POST['page'];
@@ -86,7 +89,8 @@ class PageController extends AbstractController
         }
         $id = $_GET['id'] ?? $_POST['id'] ?? 0;
         $data = $this->model->find($id);
-        $this->view->edit($data);
+
+        return $this->view->edit($data);
     }
 
 }
